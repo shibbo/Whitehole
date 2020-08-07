@@ -120,7 +120,7 @@ public class LevelObj extends AbstractObj {
 
     @Override
     public void getProperties(PropertyGrid panel) {
-        panel.addCategory("obj_rendering", Settings.japanese ? "レンダリング設定" : "Rendering");
+        panel.addCategory("obj_rendering", "Rendering");
         panel.addField("pos_x", getFieldName("pos_x"), "float", null, position.x, "Default");
         panel.addField("pos_y", getFieldName("pos_y"), "float", null, position.y, "Default");
         panel.addField("pos_z", getFieldName("pos_z"), "float", null, position.z, "Default");
@@ -131,7 +131,7 @@ public class LevelObj extends AbstractObj {
         panel.addField("scale_y", getFieldName("scale_y"), "float", null, scale.y, "Default");
         panel.addField("scale_z", getFieldName("scale_z"), "float", null, scale.z, "Default");
         
-        panel.addCategory("obj_settings", Settings.japanese ? "その他の設定" : "Settings");
+        panel.addCategory("obj_settings", "Settings");
         panel.addField("l_id", "ID", "int", null, data.get("l_id"), "Default");
         panel.addField("MessageId", getFieldName("MessageId"), "int", null, data.get("MessageId"), "Default");
         panel.addField("CameraSetId", getFieldName("CameraSetId"), "int", null, data.get("CameraSetId"), "Default");

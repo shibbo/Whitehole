@@ -34,8 +34,6 @@ public class SettingsForm extends javax.swing.JFrame {
         initComponents();
         if(Settings.dark)
             initDarkTheme();
-        if(Settings.japanese)
-            initJapanese();
         
         txtModFolderDir.setText(Settings.modFolder_dir);
         txtSuperBMDDir.setText(Settings.superBMD_dir);
@@ -48,7 +46,6 @@ public class SettingsForm extends javax.swing.JFrame {
         chkAntiAlias.setSelected(Settings.aa);
         chkFakeCol.setSelected(Settings.fakeCol);
         chkNoShaderRender.setSelected(Settings.legacy);
-        chkJapanese.setSelected(Settings.japanese);
         chkReverseRot.setSelected(Settings.reverseRot);
         chkFileNames.setSelected(Settings.fileNames);
         chkAssoc.setSelected(Settings.associated);
@@ -66,31 +63,11 @@ public class SettingsForm extends javax.swing.JFrame {
         }
     }
     
-    private void initJapanese() {
-        lblRendering.setFont(chkUseShaders.getFont());
-        lblRendering.setText("3Dレンダリング設定");
-        chkAntiAlias.setText("アンチエイリアス を使用する(滑らかに描写)");
-        chkUseShaders.setText("3Dレンダリングにシェーダーを使用する(推奨)");
-        chkFastDrag.setText("右クリック&ドラックでワイヤーフレームで描写");
-        chkFakeCol.setText("すべてが青でレンダリングされ軽量化できます(低スペック向け)");
-        lblMisc.setFont(chkAntiAlias.getFont());
-        lblMisc.setText("その他");
-        chkDarkTheme.setText("ダークテーマ");
-        chkGameDir.setText("起動時に前回開いたファイルを自動的に開く");
-        chkRichPresence.setText("Discord Rich Presence(Discord側の設定が必要)");
-        chkNoShaderRender.setText("OpenGLが古い場合はこの設定にチェックを入れてください。（2.0以下は動作未確認）");
-        chkJapanese.setText("日本語化");
-        btnOk.setText("保存");
-        btnCancel.setText("キャンセル");
-        if(Settings.japanese)
-            this.setBounds(this.getX(), this.getY(), this.getWidth()+100, this.getHeight());
-    }
-    
     private void initDarkTheme() {
         jTabbedPane2.setUI(new DarkThemeRenderers.DarkTabbedPaneUI());
         
         ArrayList<JCheckBox> chkArray = new ArrayList();
-        chkArray.addAll(Arrays.asList(chkAntiAlias, chkDarkTheme, chkFakeCol, chkFastDrag, chkGameDir, chkJapanese, chkNoShaderRender,
+        chkArray.addAll(Arrays.asList(chkAntiAlias, chkDarkTheme, chkFakeCol, chkFastDrag, chkGameDir, chkNoShaderRender,
                 chkRichPresence, chkUseShaders, chkReverseRot, chkFileNames, chkAssoc, chkWASD));
         for (JCheckBox chk : chkArray){
             chk.setBackground(new Color(32,34,37));
@@ -148,7 +125,6 @@ public class SettingsForm extends javax.swing.JFrame {
         chkGameDir = new javax.swing.JCheckBox();
         chkRichPresence = new javax.swing.JCheckBox();
         chkFileNames = new javax.swing.JCheckBox();
-        chkJapanese = new javax.swing.JCheckBox();
         chkAssoc = new javax.swing.JCheckBox();
         chkNoShaderRender = new javax.swing.JCheckBox();
         pnlPaths = new javax.swing.JPanel();
@@ -259,8 +235,6 @@ public class SettingsForm extends javax.swing.JFrame {
         chkFileNames.setSelected(true);
         chkFileNames.setText("Show opened files");
 
-        chkJapanese.setText("Japanese");
-
         chkAssoc.setText("Associate .ARC Files");
         chkAssoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,8 +256,6 @@ public class SettingsForm extends javax.swing.JFrame {
                     .addComponent(chkGameDir)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(chkDarkTheme)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chkJapanese)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chkAssoc))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -304,7 +276,6 @@ public class SettingsForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkDarkTheme)
-                    .addComponent(chkJapanese)
                     .addComponent(chkAssoc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkGameDir)
@@ -549,7 +520,6 @@ public class SettingsForm extends javax.swing.JFrame {
         Settings.aa = chkAntiAlias.isSelected();
         Settings.fakeCol = chkFakeCol.isSelected();
         Settings.legacy = chkNoShaderRender.isSelected();
-        Settings.japanese = chkJapanese.isSelected();
         Settings.reverseRot = chkReverseRot.isSelected();
         Settings.fileNames = chkFileNames.isSelected();
         
@@ -633,7 +603,6 @@ public class SettingsForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkFastDrag;
     private javax.swing.JCheckBox chkFileNames;
     private javax.swing.JCheckBox chkGameDir;
-    private javax.swing.JCheckBox chkJapanese;
     private javax.swing.JCheckBox chkNoShaderRender;
     private javax.swing.JCheckBox chkReverseRot;
     private javax.swing.JCheckBox chkRichPresence;

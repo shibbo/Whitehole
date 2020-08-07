@@ -25,11 +25,7 @@ import javax.swing.JLabel;
 public class AboutForm extends javax.swing.JFrame {
     public AboutForm() {
         initComponents();
-        if(Settings.japanese) {
-            jLabel2.setText("​スーパーマリオギャラクシーとスーパーマリオギャラクシー2のギャラクシーエディタ。");
-            jLabel3.setText("Whiteholeは無料ソフトであり有料ソ");
-            jLabel4.setText("フトとして配布することを禁じます。");
-        }
+
         if(Settings.dark) {
             ArrayList<JLabel> btnArray = new ArrayList<>();
             btnArray.addAll(Arrays.asList(jLabel1, jLabel10,jLabel11,jLabel12,jLabel13,jLabel15,jLabel16,jLabel17,jLabel18,jLabel2,jLabel3,jLabel4,jLabel5,jLabel6,jLabel7,jLabel8,jLabel9,jLabel19, jLabel14, jLabel20, jLabel21, jLabel22));

@@ -123,15 +123,6 @@ public class MainFrame extends javax.swing.JFrame {
         if(Settings.dark)
             initDarkTheme();
         
-        if(Settings.japanese) {
-            btnOpenGame.setText("ゲームフォルダの選択");
-            btnOpenGalaxy.setText("このギャラクシーを開く");
-            btnTools.setText("BCSV エディター");
-            btnHashGen.setText("Hash 計算機");
-            btnSettings.setText("設定");
-            btnAbout.setText("ホワイトホールに関して");
-        }
-        
         pmnTools.setLightWeightPopupEnabled(true);
         
         if(Settings.gameDir && Preferences.userRoot().get("lastGameDir", null) != null) {
@@ -169,19 +160,13 @@ public class MainFrame extends javax.swing.JFrame {
 
             btnTools.setEnabled(false);
 
-            if(Settings.japanese)
-                lbStatusBar.setText("ディレクトリを開くことができませんでした");
-            else
-                lbStatusBar.setText("Selected directory isn't an SMG1/2 workspace.");
+            lbStatusBar.setText("Selected directory isn't an SMG1/2 workspace.");
         } else {
             for (String galaxy : galaxies)
                 galaxylist.addElement(galaxy);
 
             btnTools.setEnabled(true);
-            if(Settings.japanese)
-                lbStatusBar.setText("ゲームディレクトリが正常に開かれました");
-            else
-                lbStatusBar.setText("Successfully opened the game directory!");
+            lbStatusBar.setText("Successfully opened the game directory!");
         }
     }
     
@@ -380,10 +365,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void btnOpenGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenGameActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        if(Settings.japanese)
-            fc.setDialogTitle("ゲームディレクトリを選択");
-        else
-            fc.setDialogTitle("Open a game archive");
+        fc.setDialogTitle("Open a game archive");
         String lastdir = Preferences.userRoot().get("lastGameDir", null);
         if (lastdir != null) fc.setSelectedFile(new File(lastdir));
         if (fc.showOpenDialog(this) != JFileChooser.APPROVE_OPTION)
@@ -434,10 +416,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_galaxyListValueChanged
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(Settings.japanese)
-            lbStatusBar.setText("開始");
-        else
-            lbStatusBar.setText("Started!");
+        lbStatusBar.setText("Started!");
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

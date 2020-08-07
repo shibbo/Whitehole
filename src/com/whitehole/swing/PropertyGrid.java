@@ -279,10 +279,7 @@ public class PropertyGrid extends JTable {
         
         @Override
         public String getColumnName(int col) {
-            if(Settings.japanese)
-                return col == 0 ? "詳細情報" : "値";
-            else
-                return col == 0 ? "Property" : "Value";
+            return col == 0 ? "Property" : "Value";
         }
         
         @Override

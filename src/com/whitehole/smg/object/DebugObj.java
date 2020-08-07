@@ -81,7 +81,7 @@ public class DebugObj extends AbstractObj {
 
     @Override
     public void getProperties(PropertyGrid panel) {
-        panel.addCategory("obj_rendering", Settings.japanese ? "レンダリング設定" : "Rendering");
+        panel.addCategory("obj_rendering", "Rendering");
         panel.addField("pos_x", getFieldName("pos_x"), "float", null, position.x, "Default");
         panel.addField("pos_y", getFieldName("pos_y"), "float", null, position.y, "Default");
         panel.addField("pos_z", getFieldName("pos_z"), "float", null, position.z, "Default");

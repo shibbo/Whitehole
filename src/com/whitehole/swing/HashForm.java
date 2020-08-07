@@ -39,13 +39,6 @@ public class HashForm extends javax.swing.JFrame {
         lblSpaces.setFont(btnAddTo.getFont());
         if(Settings.dark)
             initDarkTheme();
-        
-        if(Settings.japanese) {
-            lblInput.setText("原文");
-            lblOutput.setText("新しいテキスト");
-            btnCopy.setText("ハッシュをコピー");
-            btnAddTo.setText("書き入れる");
-        }
     }
     
     private void initDarkTheme() {

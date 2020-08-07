@@ -59,8 +59,6 @@ public class BcsvEditorForm extends javax.swing.JFrame
                 }
             }
         });
-        if(Settings.japanese)
-            initJapanese();
         if(Settings.dark)
             initDarkTheme();
         
@@ -145,61 +143,6 @@ public class BcsvEditorForm extends javax.swing.JFrame
             mnuArray.get(i).setBackground(new Color(32,34,37));
             mnuArray.get(i).setForeground(new Color(157,158,161));
         }
-    }
-    
-    private void initJapanese() {
-        lblArchive.setText("ARC: ");
-        lblFile.setText("BCSV: ");
-        btnOpen.setText("開く");
-        btnSave.setText("保存");
-        btnExport.setText("エクスポート");
-        btnAddRow.setText("行を追加");
-        btnDuplicateRow.setText("行の複製");
-        btnDeleteRow.setText("行を消す");
-        btnClear.setText("全ての行を消す");
-        mnuFile.setText("ファイル");
-            subOpen.setText("開く");
-            subSave.setText("保存");
-            subExport.setText("エクスポート");
-            subClose.setText("閉じる");
-        mnuOpen.setText("開く");
-            mnuGalaxy.setText("ギャラクシー");
-            subScenarioData.setText("シナリオデータ");
-            subGalaxyInfo.setText("ギャラクシー情報");
-            subZoneList.setText("ゾーンリスト");
-            subZoneInfo.setText("ゾーン情報");
-            mnuUseResource.setText("使用するリソース");
-            mnuZone.setText("ゾーン");
-            subCameraParam.setText("カメラ");
-            subLightDataZone.setText("ライト");
-            subStageInfo.setText("ステージ情報");
-            subChangeSceneListInfo.setText("シナリオ変更リスト情報");
-            subPlanetMapData.setText("プラネットマップデータテーブル");
-            subProductMapObjData.setText("プロダクトマップobjデータテーブル");
-            subObjName.setText("オブジェクト名テーブル");
-            mnuNPCData.setText("NPCデータ");
-            subStageBgmInfo.setText("ステージBGM情報");
-            subScenarioBgmInfo.setText("シナリオBGM情報");
-            subMultiBgmInfo.setText("複数の音楽情報");
-            subBgmParam.setText("BGMパラメータ");
-            subActionSound.setText("アクションサウンド");
-            subSoundIdToInstList.setText("サウンドIDをInstリストに");
-            mnuObjects.setText("オブジェクト");
-            subParticleNames.setText("パーティクル名");
-            subAutoEffectList.setText("自動効果リスト");
-            mnuAudio.setText("音楽");
-            mnuEffects.setText("効果");
-            mnuSystem.setText("システム");
-            subGalaxyDataTable.setText("ギャラクシーデータテーブル");
-            subGalaxyWorldOrderList.setText("ギャラクシーワールド順リスト");
-            subMarioFaceShipEventDataTable.setText("星船マリオイベントデータテーブル");
-            subMarioFaceShipEventCastTable.setText("星船マリオイベントキャストテーブル");
-            subHeapSizeExcept.setText("ヒープサイズを除く");
-            subWorldMapHeapGalaxy.setText("ワールドマップヒープギャラクシー");
-            subWorldMapHeapResource.setText("ワールドマップヒープリソース");
-            mnuOther.setText("その他");
-            subLightData.setText("ライトデータ");
-            subWorldMapCamera.setText("ワールドマップカメラ");
     }
     
     public void bcsvOpen() {

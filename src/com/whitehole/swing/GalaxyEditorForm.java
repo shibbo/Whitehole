@@ -86,8 +86,6 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
         
         if(Settings.dark)
             initDarkTheme();
-        if(Settings.japanese)
-            initJapanese();
         
         galaxyName = galaxy;
         
@@ -234,8 +232,6 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
         initVariables();
         if(Settings.dark)
             initDarkTheme();
-        if(Settings.japanese)
-            initJapanese();
         
         subZoneData = null;
         galaxyArc = null;
@@ -1214,10 +1210,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
         pnlObjectSettings.clear();
         
         if(selectedObjs.isEmpty()) {
-            if(Settings.japanese)
-                lbStatusLabel.setText("オブジェクトの選択解除しました。");
-            else
-                lbStatusLabel.setText("Object deselected.");
+            lbStatusLabel.setText("Object deselected.");
             btnDeselect.setEnabled(false);
             camSelected = false;
             jSeparator13.setVisible(camSelected);
@@ -1267,21 +1260,14 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
                 if(selectedObj instanceof PathPointObj) {
                     PathPointObj selectedPathPoint =(PathPointObj)selectedObj;
                     PathObj path = selectedPathPoint.path;
-                    if(Settings.japanese)
-                        lbStatusLabel.setText(String.format("選択された [%3$d] %1$s(%2$s), ポイント %4$d",
-                                path.data.get("name"), path.zone.zoneName, path.pathID, selectedPathPoint.index) + ".");
-                    else
-                        lbStatusLabel.setText(String.format("Selected [%3$d] %1$s(%2$s), point %4$d",
+                    lbStatusLabel.setText(String.format("Selected [%3$d] %1$s(%2$s), point %4$d",
                                 path.data.get("name"), path.zone.zoneName, path.pathID, selectedPathPoint.index) + ".");
                     btnDeselect.setEnabled(true);
                     selectedPathPoint.getProperties(pnlObjectSettings);
                 }
                 else {
                     String layer = selectedObj.layer.equals("common") ? "Common" : "Layer" + selectedObj.layer.substring(5).toUpperCase();
-                    if(Settings.japanese)
-                        lbStatusLabel.setText("選択されたオブジェクト " + selectedObj.name + "(" + selectedObj.zone.zoneName + ", " + layer + ").");
-                    else
-                        lbStatusLabel.setText("Selected " + selectedObj.name + "(" + selectedObj.zone.zoneName + ", " + layer + ").");
+                    lbStatusLabel.setText("Selected " + selectedObj.name + "(" + selectedObj.zone.zoneName + ", " + layer + ").");
                     btnDeselect.setEnabled(true);
                     
                     LinkedList layerlist = new LinkedList();
@@ -1293,12 +1279,12 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
                     }
                     
                     if(selectedObj.getClass() != PathPointObj.class) {
-                        pnlObjectSettings.addCategory("obj_general", Settings.japanese ? "一般" : "General");
+                        pnlObjectSettings.addCategory("obj_general", "General");
                         if(selectedObj.getClass() != StartObj.class && selectedObj.getClass() != DebugObj.class && selectedObj.getClass() != ChangeObj.class)
-                            pnlObjectSettings.addField("name", Settings.japanese ? "オブジェクト" : "Object", "objname", null, selectedObj.name, "Default");
+                            pnlObjectSettings.addField("name", "Object", "objname", null, selectedObj.name, "Default");
                         if(galaxyMode)
-                            pnlObjectSettings.addField("zone", Settings.japanese ? "ゾーン" : "Zone", "list", galaxyArc.zoneList, selectedObj.zone.zoneName, "Default");
-                        pnlObjectSettings.addField("layer", Settings.japanese ? "レイヤー" : "Layer", "list", layerlist, layer, "Default");
+                            pnlObjectSettings.addField("zone", "Zone", "list", galaxyArc.zoneList, selectedObj.zone.zoneName, "Default");
+                        pnlObjectSettings.addField("layer", "Layer", "list", layerlist, layer, "Default");
                     }
 
                     selectedObj.getProperties(pnlObjectSettings);
@@ -1314,10 +1300,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
         }
         
         if(selectedObjs.size() > 1) {
-            if(Settings.japanese)
-                lbStatusLabel.setText("複数のオブジェクト("+ selectedObjs.size() + ")");
-            else
-                lbStatusLabel.setText("Multiple objects selected.(" + selectedObjs.size() + ").");
+            lbStatusLabel.setText("Multiple objects selected.(" + selectedObjs.size() + ").");
         }
         
         pnlObjectSettings.doLayout();
@@ -1570,10 +1553,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
     }
     
     private void setStatusText() {
-        if(Settings.japanese)
-            lbStatusLabel.setText(galaxyMode ? "シナリオ編集 " + lbScenarioList.getSelectedValue() + ", ゾーン " + curZone : "ゾーン編集 " + curZone);
-        else
-            lbStatusLabel.setText(galaxyMode ? "Editing scenario " + lbScenarioList.getSelectedValue() + ", zone " + curZone + "." :
+        lbStatusLabel.setText(galaxyMode ? "Editing scenario " + lbScenarioList.getSelectedValue() + ", zone " + curZone + "." :
                                                 "Editing zone " + curZone + ".");
     }
     
@@ -1802,16 +1782,10 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
             }
             
             unsavedChanges = false;
-            if(Settings.japanese)
-                lbStatusLabel.setText("変更を保存しました");
-            else
-                lbStatusLabel.setText("Saved changes!");
+            lbStatusLabel.setText("Saved changes!");
         }
         catch(IOException ex) {
-            if(Settings.japanese)
-                lbStatusLabel.setText("変更を保存できませんでした: " + ex.getMessage());
-            else
-                lbStatusLabel.setText("Failed to save changes: " + ex.getMessage() + ".");
+            lbStatusLabel.setText("Failed to save changes: " + ex.getMessage() + ".");
             
             System.err.println(ex.getLocalizedMessage());
         }
@@ -1877,10 +1851,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
             for(AbstractObj selectedObj : selectedObjs.values()) {
                 copyPos =(Vector3) selectedObj.position.clone();
                 itmPositionPaste.setText("Position(" + copyPos.x + ", " + copyPos.y + ", " + copyPos.z + ")");
-                if(Settings.japanese)
-                    lbStatusLabel.setText("位置をコピー " + copyPos.x + ", " + copyPos.y + ", " + copyPos.z + ".");
-                else
-                    lbStatusLabel.setText("Copied position " + copyPos.x + ", " + copyPos.y + ", " + copyPos.z + ".");
+                lbStatusLabel.setText("Copied position " + copyPos.x + ", " + copyPos.y + ", " + copyPos.z + ".");
             }
         }
     }//GEN-LAST:event_itmPositionCopyActionPerformed
@@ -1893,10 +1864,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
                 
                 copyDir =(Vector3) selectedObj.rotation.clone();
                 itmRotationPaste.setText("Rotation(" + copyDir.x + ", " + copyDir.y + ", " + copyDir.z + ")");
-                if(Settings.japanese)
-                    lbStatusLabel.setText("回転をコピー " + copyDir.x + ", " + copyDir.y + ", " + copyDir.z + ".");
-                else
-                    lbStatusLabel.setText("Copied rotation " + copyDir.x + ", " + copyDir.y + ", " + copyDir.z + ".");
+                lbStatusLabel.setText("Copied rotation " + copyDir.x + ", " + copyDir.y + ", " + copyDir.z + ".");
             }
         }
     }//GEN-LAST:event_itmRotationCopyActionPerformed
@@ -1909,10 +1877,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
                 
                 copyScale =(Vector3) selectedObj.scale.clone();
                 itmScalePaste.setText("Scale(" + copyScale.x + ", " + copyScale.y + ", " + copyScale.z + ")");
-                if(Settings.japanese)
-                    lbStatusLabel.setText("倍率をコピー " + copyScale.x + ", " + copyScale.y + ", " + copyScale.z + ".");
-                else
-                    lbStatusLabel.setText("Copied scale " + copyScale.x + ", " + copyScale.y + ", " + copyScale.z + ".");
+                lbStatusLabel.setText("Copied scale " + copyScale.x + ", " + copyScale.y + ", " + copyScale.z + ".");
             }
         }
     }//GEN-LAST:event_itmScaleCopyActionPerformed
@@ -1936,10 +1901,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
             rerenderTasks.add("zone:"+selectedObj.zone.zoneName);
             
             glCanvas.repaint();
-            if(Settings.japanese)
-                lbStatusLabel.setText("倍率の貼り付け " + copyScale.x + ", " + copyScale.y + ", " + copyScale.z + ".");
-            else
-                lbStatusLabel.setText("Pasted scale " + copyScale.x + ", " + copyScale.y + ", " + copyScale.z + ".");
+            lbStatusLabel.setText("Pasted scale " + copyScale.x + ", " + copyScale.y + ", " + copyScale.z + ".");
             unsavedChanges = true;
         }
     }//GEN-LAST:event_itmScalePasteActionPerformed
@@ -1997,10 +1959,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
             }
             
             glCanvas.repaint();
-            if(Settings.japanese)
-                lbStatusLabel.setText("位置の貼り付け " + copyPos.x + ", " + copyPos.y + ", " + copyPos.z + ".");
-            else
-                lbStatusLabel.setText("Pasted position " + copyPos.x + ", " + copyPos.y + ", " + copyPos.z + ".");
+            lbStatusLabel.setText("Pasted position " + copyPos.x + ", " + copyPos.y + ", " + copyPos.z + ".");
             unsavedChanges = true;
         }
     }//GEN-LAST:event_itmPositionPasteActionPerformed
@@ -2023,10 +1982,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
             rerenderTasks.add("zone:"+selectedObj.zone.zoneName);
             
             glCanvas.repaint();
-            if(Settings.japanese)
-                lbStatusLabel.setText("回転の貼り付け " + copyDir.x + ", " + copyDir.y + ", " + copyDir.z + ".");
-            else
-                lbStatusLabel.setText("Pasted rotation " + copyDir.x + ", " + copyDir.y + ", " + copyDir.z + ".");
+            lbStatusLabel.setText("Pasted rotation " + copyDir.x + ", " + copyDir.y + ", " + copyDir.z + ".");
             unsavedChanges = true;
         }
     }//GEN-LAST:event_itmRotationPasteActionPerformed
@@ -2101,10 +2057,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
                 setStatusText();
             } else {
                 deletingObjects = true;
-                if(Settings.japanese)
-                    lbStatusLabel.setText("削除するオブジェクトをクリックします。 Shiftキーを押しながら複数のオブジェクトを削除します。 右クリックして中止します。");
-                else
-                    lbStatusLabel.setText("Click the object you want to delete. Hold Shift to delete multiple objects. Right-click to abort.");
+                lbStatusLabel.setText("Click the object you want to delete. Hold Shift to delete multiple objects. Right-click to abort.");
             }
         }
     }//GEN-LAST:event_tgbDeleteObjectActionPerformed
@@ -3798,10 +3751,8 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
                 addingObjectOnLayer = form.selectedLayer.trim();
                 break;
         }
-        if(Settings.japanese)
-            lbStatusLabel.setText("オブジェクトを配置するには、レベルビューをクリックします。 Shiftキーを押しながら複数のオブジェクトを配置します。 右クリックして中止します。");
-        else
-            lbStatusLabel.setText("Click the level view to place your object. Hold Shift to place multiple objects. Right-click to abort.");
+        
+        lbStatusLabel.setText("Click the level view to place your object. Hold Shift to place multiple objects. Right-click to abort.");
     }
     
     public void makeFullscreen() {
@@ -4448,10 +4399,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
             
             gl.glClearColor(0f, 0f, 0.125f, 1f);
             gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
-            if(Settings.japanese)
-                lbStatusLabel.setText("事前レンダリング中 "+(galaxyMode?"galaxy":"zone")+", お待ちください...");
-            else
-                lbStatusLabel.setText("Prerendering "+(galaxyMode?"galaxy":"zone")+", please wait...");
+            lbStatusLabel.setText("Prerendering "+(galaxyMode?"galaxy":"zone")+", please wait...");
             
             SwingUtilities.invokeLater(new GalaxyRenderer.AsyncPrerenderer(gl));
             
@@ -6518,74 +6466,6 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
                 }
             });
         }
-    }
-    
-    private void initJapanese() {
-        String err = "err.jap";
-        mnuSave.setText("ファイル");
-            itemSave.setText("保存");
-            itemClose.setText("閉じる");
-        mnuEdit.setText("編集");
-            subCopy.setText("コピー");
-                itmPositionCopy.setText("位置");
-                itmRotationCopy.setText("回転");
-                itmScaleCopy.setText("倍率");
-            subPaste.setText("貼り付け");
-                itmPositionPaste.setText("位置(0.0, 0.0, 0.0)");
-                itmRotationPaste.setText("回転(0.0, 0.0, 0.0)");
-                itmScalePaste.setText("倍率(1.0, 1.0, 1.0)");
-        mnuHelp.setText("ヘルプ");
-            itemControls.setText("操作について");
-        
-        btnDeselect.setText("選択解除");
-        btnShowPaths.setText("パスを見る");
-        tgbShowAxis.setText("軸を表示する");
-        
-        for(int i = 0; i < tpLeftPanel.getTabCount(); i++) {
-            tpLeftPanel.getComponentAt(i).setName("a" + i);
-            JLabel lbl = new JLabel();
-            switch(i) {
-                case 0:
-                    lbl.setText("シナリオ/ゾーン");
-                    break;
-                case 1:
-                    lbl.setText("layer");
-                    break;
-                case 2:
-                    lbl.setText("オブジェクト");
-                    break;
-                case 3:
-                    lbl.setText("worldmap");
-                    break;
-            }
-            lbl.setFocusable(false);
-            lbl.setOpaque(false);
-            if(Settings.dark)
-                lbl.setForeground(new Color(157,158,161));
-            tpLeftPanel.setTabComponentAt(i, lbl);
-        }
-        
-        
-        jLabel3.setText("編集中のシナリオ");
-        btnAddScenario.setText(err);
-        btnEditScenario.setText(err);
-        btnDeleteScenario.setText(err);
-        
-        jLabel4.setText("ゾーン");
-        btnAddZone.setText(err);
-        btnEditZone.setText("個別に編集");
-        btnDeleteZone.setText(err);
-        
-        jLabel1.setText(err);
-        
-        tgbAddObject.setText("オブジェクトを追加する");
-        tgbDeleteObject.setText("消去する");
-        btnShowAreas.setText("エリアを表示");
-        btnShowCameras.setText("カメラを表示");
-        btnShowGravity.setText("重力を表示");
-        btnShowPaths.setText("パスを表示");
-        tgbCamGen.setText("作るカメラ");
-        tgbCamPrev.setText("見せる CameraArea");
     }
 
     private void populateQuickActions() {

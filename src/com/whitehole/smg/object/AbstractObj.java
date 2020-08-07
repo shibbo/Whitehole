@@ -89,56 +89,35 @@ public abstract class AbstractObj {
     }
     
     public String getFieldName(String inName) {
-        boolean jap = Settings.japanese;
         if(inName.contains("pos_")) {
-            if(jap)
-                return inName.substring(inName.length() - 1, inName.length()).toUpperCase() + "位置";
             return inName.substring(inName.length() - 1, inName.length()).toUpperCase() + " position";
         }
         if(inName.contains("dir_")) {
-            if(jap)
-                return inName.substring(inName.length() - 1, inName.length()).toUpperCase() + "回転";
             return inName.substring(inName.length() - 1, inName.length()).toUpperCase() + " rotation";
         }
         if(inName.contains("scale_")) {
-            if(jap)
-                return inName.substring(inName.length() - 1, inName.length()).toUpperCase() + "倍率";
             return inName.substring(inName.length() - 1, inName.length()).toUpperCase() + " scale";
         }
         
         if(inName.equals("CommonPath_ID")) {
-            if(jap)
-                return "パスID";
             return "Path ID";
         }
         if(inName.equals("MessageId")) {
-            if(jap)
-                return "メッセージID";
             return "Message ID";
         }
         if(inName.equals("CameraSetId")) {
-            if(jap)
-                return "カメラID";
             return "Camera ID";
         }
         if(inName.equals("ShapeModelNo")) {
-            if(jap)
-                return "モデル番号";
             return "Model No.";
         }
         if(inName.equals("ParamScale")) {
-            if(jap)
-                return "速度倍率(小数可)";
             return "Speed Scale";
         }
         if(inName.equals("Priority")) {
-            if(jap)
-                return "優先度";
             return inName;
         }
         if(inName.equals("AreaShapeNo")) {
-            if(jap)
-                return "形状番号";
             return "Area No.";
         }
         System.out.println(inName);
