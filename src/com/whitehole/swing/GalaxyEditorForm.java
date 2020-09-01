@@ -644,6 +644,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(335);

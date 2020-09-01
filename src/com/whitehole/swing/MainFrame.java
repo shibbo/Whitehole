@@ -15,6 +15,7 @@
 
 package com.whitehole.swing;
 
+import com.whitehole.ObjectDBUpdater;
 import com.whitehole.rendering.cache.RendererCache;
 import com.whitehole.rendering.cache.ShaderCache;
 import com.whitehole.rendering.cache.TextureCache;
@@ -415,6 +416,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         lbStatusBar.setText("Started!");
+        
+        ObjectDBUpdater up = new ObjectDBUpdater(lbStatusBar);
+        up.start();
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

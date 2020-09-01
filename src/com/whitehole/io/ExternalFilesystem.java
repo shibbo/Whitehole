@@ -53,9 +53,6 @@ public class ExternalFilesystem implements FilesystemBase {
                 ret.add(file.getName());
             }
         } catch(Exception ex) {
-            if(Settings.japanese)
-                MainFrame.lbStatusBar.setText("​ゲームディレクトリ(フォルダ)を開けませんでした。");
-            else
                 MainFrame.lbStatusBar.setText("Failed to open game directory.");
         }
 
