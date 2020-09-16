@@ -612,6 +612,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
         tvWorldmapObjectList = new javax.swing.JTree();
         btnSaveWorldmap = new javax.swing.JButton();
         scpWorldmapObjSettingsContainer = new javax.swing.JScrollPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new JMenuBar(); if(Settings.dark) jMenuBar1 = new DarkJMenuBar();
         mnuSave = new javax.swing.JMenu();
         itemSave = new javax.swing.JMenuItem();
@@ -644,7 +645,6 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(335);
@@ -1054,6 +1054,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
         jSplitPane5.setRightComponent(scpWorldmapObjSettingsContainer);
 
         tpLeftPanel.addTab("WorldMap", jSplitPane5);
+        tpLeftPanel.addTab("Cameras", jTabbedPane1);
 
         jSplitPane1.setTopComponent(tpLeftPanel);
         tpLeftPanel.getAccessibleContext().setAccessibleDescription("");
@@ -5897,6 +5898,7 @@ public class GalaxyEditorForm extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane4;
     private javax.swing.JSplitPane jSplitPane5;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
     private javax.swing.JToolBar jToolBar4;

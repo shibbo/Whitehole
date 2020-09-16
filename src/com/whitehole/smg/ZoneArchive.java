@@ -36,6 +36,7 @@ import java.io.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 import com.whitehole.Whitehole;
+import com.whitehole.smg.object.Camera;
 
 public class ZoneArchive {
     
@@ -114,6 +115,7 @@ public class ZoneArchive {
                     break;
             }
             loadPaths();
+            loadCameras();
         }
         catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Can't open galaxy, because of missing zone files.\n\nIf you are modding SMG1, try to remove the unused zones from the galaxy's zone list.\nYou can use the BCSV editor to do this.", Whitehole.NAME, 0);
@@ -261,6 +263,19 @@ public class ZoneArchive {
         }
     }
     
+    private void loadCameras() {
+        try {
+            BcsvFile bcsv = new BcsvFile(mapArc.openFile("/Stage/camera/CameraParam.bcam"));
+            cameras = new ArrayList<>(bcsv.entries.size());
+            
+            for (BcsvFile.Entry e : bcsv.entries)
+                cameras.add(new Camera(this, e));
+        }
+        catch (IOException ex) {
+            System.out.println(zoneName+": Failed to load cameras: "+ex.getMessage());
+        }
+    }
+    
     private void loadPaths() {
         try {
             BcsvFile bcsv = new BcsvFile(mapArc.openFile("/Stage/jmp/Path/CommonPathInfo"));
@@ -303,4 +318,6 @@ public class ZoneArchive {
     public HashMap<String, List<AbstractObj>> objects;
     public HashMap<String, List<StageObj>> zones;
     public List<PathObj> paths;
+    public List<Camera> cameras;
+    
 }
