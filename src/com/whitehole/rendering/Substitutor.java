@@ -191,7 +191,15 @@ public class Substitutor {
             case "TreasureBoxCrackedKinokoLifeUp":
             case "TreasureBoxCrackedKinokoOneUp":
             case "TreasureBoxCrackedPowerStar":
-            case "TreasureBoxCrackedYellowChip": return "TreasureBoxCracked";
+            case "TreasureBoxCrackedYellowChip":
+            {
+                if (ZoneArchive.game == 1)
+                {
+                    return "TreasureBoxCracked";
+                }
+                
+                return "TreasureBox";
+            }
             case "TreasureBoxEmpty": return "TreasureBox";
             case "TreasureBoxGoldEmpty": return "TreasureBoxGold";
             case "TreasureBoxKinokoLifeUp":
